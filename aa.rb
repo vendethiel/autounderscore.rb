@@ -8,14 +8,14 @@ module AutoUnderscore
   end
 
   def it
-    _(0)
+    Underscore.new([AST::NextArgument.new])
   end
 
   def self._(idx = 0)
   end
 
   def self.it
-    Underscore.new([])
+    Underscore.new([AST::NextArgument.new])
   end
 
   (0..9).each do |i|
