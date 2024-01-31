@@ -19,8 +19,8 @@ module AutoUnderscore
       attr_reader :fn_name
       attr_reader :args
 
-      # @param [Symbol] symbol
-      # @param [List<Object>] args
+      # @param [Symbol] function name
+      # @param [List<Object>] function arguments
       def initialize(symbol, args)
         @fn_name = symbol
         @args = args

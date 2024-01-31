@@ -1,5 +1,7 @@
 module AutoUnderscore
   class Underscore
+    attr_reader :ast
+
     # @param [List<Ast::Node>] ast
     def initialize(ast)
       @ast = ast

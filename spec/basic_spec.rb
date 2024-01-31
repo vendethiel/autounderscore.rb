@@ -26,13 +26,12 @@ RSpec.describe AutoUnderscore, "Basic usage" do
       expect((it + 3)[2]).to eq 5
     end
 
-    it "Evaluates method arguments to find other nodes" do
-      expect((_ + _)[2]).to eq 4
-      expect((it + it)[2]).to eq 4
+    it "Advances argument with _" do
+      expect((_ + 3 + _)[2, 4]).to eq 9
     end
 
-    it "Restores the original argument" do
-      expect((_ + 3 + _)[2]).to eq 7
+    it "Keeps the first argument with it" do
+      expect((it + 3 + it)[2, 4]).to eq 7
     end
 
     it "Can take multiple parameters" do
@@ -40,13 +39,13 @@ RSpec.describe AutoUnderscore, "Basic usage" do
     end
 
     it "Provides shorthands" do
-      expect((_0 + _1)[1, 10]).to eq 11
+      expect((_(0) + _(1))[1, 10]).to eq 11
     end
 
     it "Allows method stacking" do
       expect(it.split(" ").join("*")["foo bar"]).to eq "foo*bar"
 
-      expr = ((_0.split(" ") + _1.split(" ")).join(_2))["a b", "c d", ","]
+      expr = ((_(0).split(" ") + _(1).split(" ")).join(_(2)))["a b", "c d", ","]
       expect(expr).to eq "a,b,c,d"
     end
   end

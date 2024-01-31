@@ -3,23 +3,23 @@ require 'autounderscore/underscore'
 require 'autounderscore/evaluator'
 
 module AutoUnderscore
-  def _(idx = 0)
-    Underscore.new([AST::ArgumentReference.new(idx)])
+  def _(idx = nil)
+    if idx == nil
+      Underscore.new([AST::NextArgument.new])
+    else
+      Underscore.new([AST::ArgumentReference.new(idx)])
+    end
   end
 
   def it
-    Underscore.new([AST::NextArgument.new])
+    Underscore.new([AST::ArgumentReference.new(0)])
   end
 
   def self._(idx = 0)
+    Underscore.new([AST::ArgumentReference.new(idx)])
   end
 
   def self.it
     Underscore.new([AST::NextArgument.new])
-  end
-
-  (0..9).each do |i|
-    define_method "_#{i}", -> { _(i) }
-    self.class.define_method "_#{i}", -> { _(i) }
   end
 end
