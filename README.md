@@ -12,9 +12,12 @@ it[0]
 #=> 0
 it.to_s[:foo]
 #=> "foo"
-(_0 + _1)[1, 10]
+(_(0) + _(1))[1, 10]
 # => 11
 # A more convoluted example
 ((_0.split(" ") + _1.split(" ")).join(_2))["a b", "c d", ","]
 #=> a,b,c,d
+# _ is the "next argument" placeholder
+(_ + _)[1, 2]
+#=> 3
 ```
